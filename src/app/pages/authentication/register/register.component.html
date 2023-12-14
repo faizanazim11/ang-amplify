@@ -1,0 +1,43 @@
+                <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Welcome to <span
+                    class="font-weight-bold">Echo
+                    Connect</span></h4>
+                <form [formGroup]="registrationForm" (ngSubmit)="register()">
+                  <mdb-form-control class="mb-4 form-white">
+                    <input mdbInput type="text" id="form3cg" class="form-control form-control"
+                      formControlName="firstName" required />
+                    <label mdbLabel class="form-label" for="form3cg">First Name</label>
+                  </mdb-form-control>
+                  <mdb-form-control class="mb-4 form-white">
+                    <input mdbInput type="text" id="form4cg" class="form-control form-control"
+                      formControlName="lastName" required />
+                    <label mdbLabel class="form-label" for="form4cg">Last Name</label>
+                  </mdb-form-control>
+                  <mdb-form-control class="mb-4 form-white">
+                    <input mdbValidate mdbInput type="email" id="form5cg" class="form-control form-control"
+                      title="Email" placeholder="Email" formControlName="email" />
+                    <label mdbLabel class="form-label" for="form5cg">Email</label>
+                    <mdb-error *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                      Email already exists
+                    </mdb-error>
+                  </mdb-form-control>
+                  <mdb-form-control class="mb-4 form-white">
+                    <input mdbValidate mdbInput type="text" id="form6cg" class="form-control form-control"
+                      title="Username" placeholder="Username" formControlName="username" />
+                    <label mdbLabel class="form-label" for="form6cg">Username</label>
+                    <mdb-error *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                      Username already exists
+                    </mdb-error>
+                  </mdb-form-control>
+                  <mdb-form-control class="mb-4 form-white">
+                    <input mdbInput type="password" id="form7cg" class="form-control form-control" title="Password"
+                      placeholder="Password" formControlName="password" />
+                    <label mdbLabel class="form-label" for="form7cg">Password</label>
+                  </mdb-form-control>
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-primary btn btn-block" type="submit">Register</button>
+                  </div>
+                </form>
+                <div class="text-center">
+                  <p>Already a member? <a routerLink="/authenticate/login">Login</a></p>
+                  <p>or sign in with:</p>
+                </div>

@@ -1,0 +1,33 @@
+body {
+    background-color: #f5f7fa;
+}
+
+.fas.fa-heart:hover {
+    color: #f44336 !important;
+}
+
+.fas.fa-share-alt:hover {
+    color: #0d47a1 !important;
+}
+
+.cardData {
+    text-align: left;
+}
+.wrapper{
+    visibility: hidden;
+}
+.wrapper:hover{
+    visibility: visible;
+}
+.cardDet {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card{
+  background-color: transparent;
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.2);
+  opacity: 0.8;
+  backdrop-filter: blur(20px);
+}

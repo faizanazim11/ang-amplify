@@ -1,0 +1,2 @@
+<ngb-toast *ngFor="let toast of echoToasterService.toasts" [header]="toast.status" [autohide]="true" [delay]="5000"
+  (hidden)="echoToasterService.remove(toast)">{{toast.message}}</ngb-toast>

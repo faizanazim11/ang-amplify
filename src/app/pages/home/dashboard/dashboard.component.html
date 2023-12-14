@@ -1,0 +1,72 @@
+<div class="col-md-12 row m-0" id="dashboard" style="height: 100vh;">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid p-0">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation" (click)="openSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="nav-link dropdown-toggle text-white" (click)="openDropdown = !openDropdown"> <i
+                    class="fas fa-user mx-1"></i> Profile </a>
+
+        </div>
+    </nav>
+    <ul class="dropdown-menu dropdown-menu-end col-md-1" *ngIf="openDropdown">
+        <li>
+            <a class="dropdown-item" href="#">My account</a>
+        </li>
+
+        <li>
+            <button class="dropdown-item" (click)="logout()">Log out</button>
+        </li>
+    </ul>
+    <div *ngIf="enableSidebar" class="col-md-3 bg-dark text-light">
+        <div class="card-body text-center">
+            <img src="https://storage.googleapis.com/echo-connect-objects/coHEX6fEmBbvpGyeCyivDm.png" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 220px;">
+            <h2 class="my-3">Sayed Imran</h2>
+            <p class="text-muted mb-1">DevOps Engineer</p>
+            <p class="text-muted mb-4">Berhampur, Odisha, India</p>
+            <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary" (click)="open(content)">UPLOAD</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Upload Post</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click'); closeModal()"></button>
+        </div>
+        <div class="modal-body bg-dark">
+          <form [formGroup]="uploadForm" (ngSubmit)="uploadFile()">
+            <label class="form-label form-white" for="file">File Input</label>
+            <input type="file" class="form-control mb-4 form-white" id="file" formControlName="file" #fileInput/>
+            <mdb-form-control class="mb-4 form-white">
+              <input mdbInput type="text" id="caption" formControlName="caption" class="form-control" />
+              <label class="form-label" for="caption">Caption</label>
+            </mdb-form-control>
+            <mdb-form-control class="mb-4 form-white">
+              <input mdbInput type="text" id="description" formControlName="description" class="form-control" />
+              <label class="form-label" for="description">Description</label>
+            </mdb-form-control>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Save click'); uploadFile()">Save</button>
+        </div>
+    </ng-template>
+    <div [ngClass]="enableSidebar ? 'col-md-9' : 'col-md-12'"
+        style="height: 100%; text-align: center; justify-content: center;" id="dashboard">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let post of getAllPosts">
+                <app-postbox [post]="post"></app-postbox>
+            </div>
+
+        </div>
+    </div>
+</div>
